@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Inflate/Inflate.csproj">
+    <BuildDependency Project="Inflate.Shader/Inflate.Shader.vcxproj" />
+  </Project>
+  <Project Path="Inflate.Shader/Inflate.Shader.vcxproj">
+    <BuildType Solution="*|*" Project="Release" />
+    <Platform Solution="*|*" Project="Win32" />
+  </Project>
+</Solution>
