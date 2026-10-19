@@ -10,6 +10,7 @@
     <BuildDependency Project="Inflate.Shader/Inflate.Shader.vcxproj" />
   </Project>
   <Project Path="Inflate.Tests/Inflate.Tests.csproj" />
+  <Project Path="Inflate.Harness/Inflate.Harness.csproj" />
   <Project Path="Inflate.Shader/Inflate.Shader.vcxproj">
     <BuildType Solution="*|*" Project="Release" />
     <Platform Solution="*|*" Project="Win32" />
