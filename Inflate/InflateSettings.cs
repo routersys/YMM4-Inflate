@@ -14,6 +14,8 @@ internal static class InflateSettings
     public const int CorrectionGroupThreads = CorrectionGroupSize * CorrectionGroupSize;
     public const int CorrectionReduceThreads = 256;
     public const float MaximumCorrectionScale = 4f;
+    public const float RadiansPerDegree = MathF.PI / 180f;
+    public const float MaximumLightElevationDegrees = 90f;
     public const uint MaskInside = 1u;
     public const int MaskOutsideShift = 1;
     public const int MaskOutsideWidth = 3;
@@ -115,8 +117,8 @@ internal static class InflateSettings
 
     public static (float X, float Y, float Z) GetLightVector(float azimuthDegrees, float elevationDegrees)
     {
-        var azimuth = azimuthDegrees * MathF.PI / 180f;
-        var elevation = Math.Clamp(elevationDegrees, 0f, 90f) * MathF.PI / 180f;
+        var azimuth = azimuthDegrees * RadiansPerDegree;
+        var elevation = Math.Clamp(elevationDegrees, 0f, MaximumLightElevationDegrees) * RadiansPerDegree;
         var horizontal = MathF.Cos(elevation);
         return (MathF.Sin(azimuth) * horizontal, -MathF.Cos(azimuth) * horizontal, MathF.Sin(elevation));
     }
