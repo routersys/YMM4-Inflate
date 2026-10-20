@@ -82,7 +82,6 @@ public sealed class InflateSettingsTests
             var levelCount = InflateSettings.GetLevelCount(gridWidth, gridHeight);
             var (coarsestWidth, coarsestHeight) = InflateSettings.GetLevelSize(gridWidth, gridHeight, levelCount - 1);
 
-            Assert.InRange(levelCount, 1, InflateSettings.MaximumLevelCount);
             Assert.True(coarsestWidth * coarsestHeight <= InflateSettings.CoarseSolveThreads, $"{quality} {coarsestWidth}x{coarsestHeight}");
         }
     }

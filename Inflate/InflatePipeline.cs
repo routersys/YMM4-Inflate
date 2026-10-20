@@ -230,10 +230,6 @@ internal sealed class InflatePipeline : IDisposable
     {
         var settings = InflateSettings.GetQuality(quality);
         var (gridWidth, gridHeight) = InflateSettings.GetGridSize(width, height, settings.GridResolution);
-        var levelCount = InflateSettings.GetLevelCount(gridWidth, gridHeight);
-        if (levelCount > InflateSettings.MaximumLevelCount)
-            throw new InvalidOperationException();
-
         var pyramidLength = InflateSettings.GetPyramidLength(gridWidth, gridHeight);
         if (!_host.TryEnsureGrid(
                 new InflateGridResources.Plan(

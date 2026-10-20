@@ -4,7 +4,6 @@ internal static class InflateSettings
 {
     public const int MaximumCanvasSize = 8192;
     public const int CoarsestLevelSize = 16;
-    public const int MaximumLevelCount = 9;
     public const int CoarseSolveThreads = CoarsestLevelSize * CoarsestLevelSize;
     public const int CoarseSolveRegions = 3;
     public const int CoarseSolveIterations = 256;
