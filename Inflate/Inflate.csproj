@@ -63,6 +63,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="$(ShaderDirPath)Inflate.cso" Link="Resources\Shader\Inflate.cso" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Include="..\YMM4-GitHubUpdateNotifier\GitHubUpdateNotifier\*.cs" LinkBase="GitHubUpdateNotifier" />
 	</ItemGroup>
 
