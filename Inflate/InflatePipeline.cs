@@ -125,7 +125,7 @@ internal sealed class InflatePipeline : IDisposable
         in Parameters parameters)
     {
         EnsureResources(width, height, parameters.Quality);
-        var derived = Derive(width, height, in parameters);
+        var derived = Derive(in parameters);
         ResolvePendingHash();
         var covered = _host.RecordSharedCoverage(source, _sourceHash, width, height, in derived);
         var structure = new StructureParameters(width, height, parameters.Quality);
@@ -179,7 +179,7 @@ internal sealed class InflatePipeline : IDisposable
         int height,
         in Parameters parameters)
     {
-        var derived = Derive(width, height, in parameters);
+        var derived = Derive(in parameters);
         _ = _host.RecordSharedRender(source, output, width, height, in derived, in parameters);
     }
 
@@ -211,11 +211,11 @@ internal sealed class InflatePipeline : IDisposable
         _hasPendingHash = false;
         _lastHashes = null;
         _shapeChanging = false;
-        var derived = Derive(width, height, in parameters);
+        var derived = Derive(in parameters);
         return _host.RecordFullPipeline(source, output, _sourceHash, width, height, in derived, in parameters);
     }
 
-    private DerivedValues Derive(int width, int height, in Parameters parameters)
+    private DerivedValues Derive(in Parameters parameters)
     {
         var settings = InflateSettings.GetQuality(parameters.Quality);
         return new DerivedValues(
