@@ -1,0 +1,196 @@
+{
+  "adapter": "Intel(R) Iris(R) Xe Graphics",
+  "driver": "32.0.101.7085",
+  "input": "synthetic 640x480 89838D8976198E40",
+  "canvas": "1280x720",
+  "cases": [
+    {
+      "name": "default",
+      "frames": [
+        0
+      ],
+      "hash": "5E413532E9415A974D6DDEEE25682B2B11FE5E8F502EFEBA56ACB35E157E14BF"
+    },
+    {
+      "name": "height-animated-frames",
+      "frames": [
+        0,
+        100,
+        200,
+        299
+      ],
+      "hash": "B695C5496E09CBF56A5A2A1DACAD97BE0FEC83649665FD673B5049B9A0240CDC"
+    },
+    {
+      "name": "light-animated-frames",
+      "frames": [
+        0,
+        100,
+        200,
+        299
+      ],
+      "hash": "4EBEE322F9C5D68344BF6A929A56BCE1EB1BFC82BAAA8ACF5B49DDA993E7FE3C"
+    },
+    {
+      "name": "amount-0",
+      "frames": [
+        0
+      ],
+      "hash": "0A700F76CEDDBAD7C4B6A2C19D46939C1A93940E86C6EFEF1E5A53DB48D2A020"
+    },
+    {
+      "name": "amount-50",
+      "frames": [
+        0
+      ],
+      "hash": "80B04573FA947CC8CBAAD0464AF935D0558C60A2FBB8B8E4C415C3650EFDCE97"
+    },
+    {
+      "name": "height-0",
+      "frames": [
+        0
+      ],
+      "hash": "7046BFF0FE9B95E20B1A142AF79B2C9D1042A47A0D68BF3FF7D4B4BA28470749"
+    },
+    {
+      "name": "height-50",
+      "frames": [
+        0
+      ],
+      "hash": "5B61BDC0C355F058EAEC780AA2038195270229450EFCE5CF144F9F808AA356D8"
+    },
+    {
+      "name": "height-300",
+      "frames": [
+        0
+      ],
+      "hash": "EF745CFC3E153115047A8748890DF22B3DB47A46C1B321E5FC59E15D95C79CFB"
+    },
+    {
+      "name": "quality-balanced",
+      "frames": [
+        0
+      ],
+      "hash": "16E840EF062E69ADAF4169A2196922F856654FB3E68AC50449920B05135810C9"
+    },
+    {
+      "name": "quality-ultra",
+      "frames": [
+        0
+      ],
+      "hash": "E676677800943FB2F27A36A2F8B6791DD92CFF6FAA2E16C1C0E757BACBD531CC"
+    },
+    {
+      "name": "light-direction-90",
+      "frames": [
+        0
+      ],
+      "hash": "2B96BF50BB42FD6EB308CBCF2395DB0BF4CEC8DAC27D8A98BDEDE7AB4B2DAEA2"
+    },
+    {
+      "name": "light-direction-minus-135",
+      "frames": [
+        0
+      ],
+      "hash": "4E421D920DE5CC8E2E21B8A8A7C09B00A6E1C6EB7BD946128A65B84B62E73508"
+    },
+    {
+      "name": "light-elevation-0",
+      "frames": [
+        0
+      ],
+      "hash": "B724612D295FD7F3219822D21A71086F1EA72512E852B697CEA737AB5A868442"
+    },
+    {
+      "name": "light-elevation-90",
+      "frames": [
+        0
+      ],
+      "hash": "687C4DE2C04BBEB8FFC30CF95600E5A0326BA3163C6547E2866A62DAE17E210C"
+    },
+    {
+      "name": "ambient-0",
+      "frames": [
+        0
+      ],
+      "hash": "E6814D23030735EC00B07434F82D23CCBA0C0ED4091AE0A7DBE8E1195061C4FB"
+    },
+    {
+      "name": "ambient-100",
+      "frames": [
+        0
+      ],
+      "hash": "7089598AB75AF71CA580322372CDB51BCDE105A2CD211A7EC5F17C3843BB088D"
+    },
+    {
+      "name": "specular-0",
+      "frames": [
+        0
+      ],
+      "hash": "7520B4CD0CE60B9600358D7C1090EF86C1A15BC85EFD41EAD427A07A2F0EA36C"
+    },
+    {
+      "name": "specular-200",
+      "frames": [
+        0
+      ],
+      "hash": "6427A36A5CB1AFC3E71B607D2A5A2375A1881B0EA2C193DD1D452794FE143033"
+    },
+    {
+      "name": "sharpness-0",
+      "frames": [
+        0
+      ],
+      "hash": "E9F7A660C14C45DE4FE1599DBE0611A5FC155B7B78F852E6BAAA53E32DF16289"
+    },
+    {
+      "name": "sharpness-100",
+      "frames": [
+        0
+      ],
+      "hash": "A90DFB5EAABA348DCD0B1B09D3CB638FCDF20525DBB25723FD5B4707286CF318"
+    },
+    {
+      "name": "reflection-0",
+      "frames": [
+        0
+      ],
+      "hash": "63AA58C0655B582EAE4E65B6C79D92931314B858370AD1C044EB3346A99CE25F"
+    },
+    {
+      "name": "reflection-100",
+      "frames": [
+        0
+      ],
+      "hash": "246D5AF1BE35F2BDA8E69E945E1917998A677C0C3700CB3FAFE08BF5B42F10B9"
+    },
+    {
+      "name": "rim-0",
+      "frames": [
+        0
+      ],
+      "hash": "722F6F84AFFC6B3AD0164F7CF5330FE242C5E91C98A74D21E102C042004E32EB"
+    },
+    {
+      "name": "rim-100",
+      "frames": [
+        0
+      ],
+      "hash": "1CB27C4FB9488F9E67CFED6D43511B55C943FB3CF294A0D8B5143C7ABF61E8F1"
+    },
+    {
+      "name": "color-keep-0",
+      "frames": [
+        0
+      ],
+      "hash": "14D6472254538AE72FC12F4AD0A6E577AC53AB377988021AD265019BA6564870"
+    },
+    {
+      "name": "color-keep-50",
+      "frames": [
+        0
+      ],
+      "hash": "7FB457792C18D7F1308ED9974FA2BDE33E8E02A5D0F65895F8AA237297BA0A7F"
+    }
+  ]
+}
