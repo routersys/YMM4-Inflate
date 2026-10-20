@@ -10,6 +10,8 @@ internal static class InflateSettings
     public const float CoverageThreshold = 0.5f;
     public const uint CoarseSolidCount = 3u;
     public const uint CoarsePairCount = 2u;
+    public const int RowGroupWidth = 32;
+    public const int RowGroupHeight = 2;
     public const int CorrectionGroupSize = 8;
     public const int CorrectionGroupThreads = CorrectionGroupSize * CorrectionGroupSize;
     public const int CorrectionReduceThreads = 256;

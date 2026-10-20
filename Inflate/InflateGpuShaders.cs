@@ -234,7 +234,7 @@ internal readonly partial struct CoarseNeighborShader(
     }
 }
 
-[ThreadGroupSize(DefaultThreadGroupSizes.XY)]
+[ThreadGroupSize(InflateSettings.RowGroupWidth, InflateSettings.RowGroupHeight, 1)]
 [GeneratedComputeShaderDescriptor]
 internal readonly partial struct ResidualShader(
     ReadWriteBuffer<float> potential,
@@ -283,7 +283,7 @@ internal readonly partial struct ResidualShader(
     }
 }
 
-[ThreadGroupSize(DefaultThreadGroupSizes.XY)]
+[ThreadGroupSize(InflateSettings.RowGroupWidth, InflateSettings.RowGroupHeight, 1)]
 [GeneratedComputeShaderDescriptor]
 internal readonly partial struct RestrictResidualShader(
     ReadWriteBuffer<float> residual,
@@ -407,7 +407,7 @@ internal readonly partial struct CoarseSolveShader(
     }
 }
 
-[ThreadGroupSize(DefaultThreadGroupSizes.XY)]
+[ThreadGroupSize(InflateSettings.RowGroupWidth, InflateSettings.RowGroupHeight, 1)]
 [GeneratedComputeShaderDescriptor]
 internal readonly partial struct ProlongShader(
     ReadWriteBuffer<float> potential,
@@ -631,7 +631,7 @@ internal readonly partial struct CorrectionScaleShader(
     }
 }
 
-[ThreadGroupSize(DefaultThreadGroupSizes.XY)]
+[ThreadGroupSize(InflateSettings.RowGroupWidth, InflateSettings.RowGroupHeight, 1)]
 [GeneratedComputeShaderDescriptor]
 internal readonly partial struct GaussSeidelShader(
     ReadWriteBuffer<uint> mask,
