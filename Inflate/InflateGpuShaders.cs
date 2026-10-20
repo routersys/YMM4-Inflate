@@ -467,7 +467,7 @@ internal readonly partial struct ProlongShader(
         var total = weight00 + weight10 + weight01 + weight11;
 
         var value = 0f;
-        if (total > 1e-6f)
+        if (total > InflateSettings.MinimumInterpolationWeight)
             value = (weight00 * potential[index00] + weight10 * potential[index10] + weight01 * potential[index01] + weight11 * potential[index11]) / total;
 
         if (accumulate != 0)
@@ -576,7 +576,7 @@ internal readonly partial struct CorrectionDotShader(
         var weight01 = (1f - wx) * wy * (mask[index01] & InflateSettings.MaskInside);
         var weight11 = wx * wy * (mask[index11] & InflateSettings.MaskInside);
         var total = weight00 + weight10 + weight01 + weight11;
-        if (total <= 1e-6f)
+        if (total <= InflateSettings.MinimumInterpolationWeight)
             return 0f;
 
         return (weight00 * potential[index00] + weight10 * potential[index10] + weight01 * potential[index01] + weight11 * potential[index11]) / total;
@@ -626,7 +626,7 @@ internal readonly partial struct CorrectionScaleShader(
         if (thread == 0)
         {
             var total = sums[InflateSettings.CorrectionReduceThreads];
-            scale[0] = total > 1e-20f ? Hlsl.Clamp(sums[0] / total, 0f, maximum) : 1f;
+            scale[0] = total > InflateSettings.MinimumCorrectionEnergy ? Hlsl.Clamp(sums[0] / total, 0f, maximum) : 1f;
         }
     }
 }

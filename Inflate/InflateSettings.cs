@@ -14,6 +14,8 @@ internal static class InflateSettings
     public const int CorrectionGroupThreads = CorrectionGroupSize * CorrectionGroupSize;
     public const int CorrectionReduceThreads = 256;
     public const float MaximumCorrectionScale = 4f;
+    public const float MinimumInterpolationWeight = 1e-6f;
+    public const float MinimumCorrectionEnergy = 1e-20f;
     public const float RadiansPerDegree = MathF.PI / 180f;
     public const float MaximumLightElevationDegrees = 90f;
     public const float LightAzimuthLimitDegrees = 180f;
