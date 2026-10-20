@@ -239,7 +239,7 @@ internal sealed class InflatePipeline : IDisposable
                     partialLength: 2 * InflateSettings.GetCorrectionGroupCount(gridWidth, gridHeight),
                     scaleLength: 1),
                 out var changed))
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("計算に使う格子を確保できません。");
 
         if (changed)
             _structureKey = null;
