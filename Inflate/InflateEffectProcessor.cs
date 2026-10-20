@@ -26,13 +26,10 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
     private ID2D1Image? _outputTransformOutput;
     private bool _isFirst = true;
     private bool _hasOutput;
-    private bool _hasOutputOffset;
-    private bool _hasCropRect;
-    private bool _hasRenderState;
-    private Vector2 _outputOffset;
-    private Vector4 _cropRect;
+    private Vector2? _outputOffset;
+    private Vector4? _cropRect;
     private float _amount;
-    private RenderState _renderState;
+    private RenderState? _renderState;
 
     public InflateEffectProcessor(IGraphicsDevicesAndContext devices, InflateEffect item)
         : base(devices)
@@ -111,12 +108,12 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
             _effect.Amount = 0f;
             _isFirst = true;
             _hasOutput = false;
-            _hasRenderState = false;
+            _renderState = null;
             return effectDescription.DrawDescription;
         }
 
         var renderState = new RenderState(pipelineParameters, simulation.Content, width, height);
-        if (simulation.StructureChanged || outputChanged || !_hasOutput || !_hasRenderState || simulation.Content is null || _renderState != renderState)
+        if (simulation.StructureChanged || outputChanged || !_hasOutput || simulation.Content is null || _renderState != renderState)
         {
             _pipeline.Render(
                 _resourceSet.GetSourceComputeBinding(),
@@ -125,7 +122,6 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
                 height,
                 in pipelineParameters);
             _renderState = renderState;
-            _hasRenderState = true;
         }
 
         _outputLease ??= _resourceSet.AcquireOutputExternalViewLease();
@@ -137,18 +133,16 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
             _effect.SetInput(1, _outputTransformOutput, true);
         }
         var cropRect = new Vector4(0f, 0f, width, height);
-        if (!_hasCropRect || _cropRect != cropRect)
+        if (_cropRect != cropRect)
         {
             _outputCrop.Rectangle = cropRect;
             _cropRect = cropRect;
-            _hasCropRect = true;
         }
         var outputOffset = new Vector2(bounds.Left, bounds.Top);
-        if (!_hasOutputOffset || _outputOffset != outputOffset)
+        if (_outputOffset != outputOffset)
         {
             _outputTransform.TransformMatrix = Matrix3x2.CreateTranslation(outputOffset);
             _outputOffset = outputOffset;
-            _hasOutputOffset = true;
         }
         _hasOutput = true;
         _isFirst = false;
@@ -339,9 +333,9 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
         _outputCrop?.SetInput(0, null, true);
         _isFirst = true;
         _hasOutput = false;
-        _hasOutputOffset = false;
-        _hasCropRect = false;
-        _hasRenderState = false;
+        _outputOffset = null;
+        _cropRect = null;
+        _renderState = null;
     }
 
     protected override void Dispose(bool disposing)
