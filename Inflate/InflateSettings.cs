@@ -32,6 +32,9 @@ internal static class InflateSettings
     public const float LightWrap = 0.35f;
     public const float ReflectionBase = 0.15f;
     public const float SurfaceWhite = 0.9f;
+    public const float SkyBlendStart = 0.25f;
+    public const float SkyBlendEnd = 0.75f;
+    public const float RimWhiteMix = 0.5f;
     public const float MinimumSpecularExponent = 4f;
     public const float MaximumSpecularExponent = 1024f;
     public const float SkyRed = 0.82f;

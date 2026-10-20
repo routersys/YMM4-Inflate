@@ -752,7 +752,7 @@ internal readonly partial struct RenderShader(
         var highlight = Hlsl.Pow(Hlsl.Saturate(Hlsl.Dot(normal, halfVector)), specularExponent) * specular * (lightCosine > 0f ? 1f : 0f);
 
         var mirrorY = 2f * facing * normal.Y;
-        var skyAmount = Hlsl.SmoothStep(0.25f, 0.75f, 0.5f - 0.5f * mirrorY);
+        var skyAmount = Hlsl.SmoothStep(InflateSettings.SkyBlendStart, InflateSettings.SkyBlendEnd, 0.5f - 0.5f * mirrorY);
         var sky = new Float3(InflateSettings.SkyRed, InflateSettings.SkyGreen, InflateSettings.SkyBlue);
         var ground = new Float3(InflateSettings.GroundRed, InflateSettings.GroundGreen, InflateSettings.GroundBlue);
         var environment = Hlsl.Lerp(ground, sky, skyAmount);
@@ -768,7 +768,7 @@ internal readonly partial struct RenderShader(
         var color = albedo * lit;
         color = Hlsl.Lerp(color, environment, reflectionAmount);
         color += new Float3(highlight, highlight, highlight);
-        color += Hlsl.Lerp(albedo, new Float3(1f, 1f, 1f), 0.5f) * (rim * edgeCubed);
+        color += Hlsl.Lerp(albedo, new Float3(1f, 1f, 1f), InflateSettings.RimWhiteMix) * (rim * edgeCubed);
         color = Hlsl.Saturate(color);
 
         output[new Int2(x, y)] = new Float4(color.X * alpha, color.Y * alpha, color.Z * alpha, alpha);
