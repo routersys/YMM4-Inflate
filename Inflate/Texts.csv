@@ -1,3 +1,37 @@
 Key,Parameter,ja-jp,en-us,zh-cn,zh-tw,ko-kr,es-es,ar-sa,id-id
-Inflate,,Inflate,Inflate,Inflate,Inflate,Inflate,Inflate,Inflate,Inflate
+Inflate,,ぷっくり立体,Puffy Inflate,膨胀立体,膨脹立體,빵빵한 입체,Volumen inflado,تضخيم مجسم,Gembung 3D
+BasicGroup,,基本,Basic,基本,基本,기본,Básico,الأساسية,Dasar
+LightGroup,,光源,Light Source,光源,光源,광원,Fuente de luz,مصدر الضوء,Sumber Cahaya
+MaterialGroup,,質感,Material,质感,質感,질감,Material,الخامة,Material
+Amount,,強さ,Amount,强度,強度,강도,Cantidad,الشدة,Jumlah
+AmountDescription,,元映像と立体にした像の合成量です,Blend amount between the source and the inflated image,原始图像与膨胀后图像的混合量,原始影像與膨脹後影像的混合量,원본 영상과 부풀린 영상의 합성량입니다,Cantidad de mezcla entre el original y la imagen inflada,مقدار الدمج بين الصورة الأصلية والصورة المنتفخة,Jumlah pencampuran antara gambar asli dan gambar yang digembungkan
+Height,,高さ,Height,高度,高度,높이,Altura,الارتفاع,Tinggi
+HeightDescription,,膨らませる高さの倍率です。輪郭の内側が広い所ほど高くなります,Scale of the inflated height. Wider areas inside the outline rise higher,膨胀高度的倍率。轮廓内部越宽的地方越高,膨脹高度的倍率。輪廓內部越寬的地方越高,부풀리는 높이의 배율입니다. 윤곽 안쪽이 넓은 곳일수록 높아집니다,Escala de la altura inflada. Las zonas más anchas dentro del contorno se elevan más,مقياس الارتفاع المنتفخ. تزداد المناطق الأعرض داخل الحدود ارتفاعاً,Skala tinggi penggembungan. Area yang lebih lebar di dalam kontur menjadi lebih tinggi
+Quality,,品質,Quality,品质,品質,품질,Calidad,الجودة,Kualitas
+QualityDescription,,高さを求める格子の解像度と反復回数を選びます,Selects the grid resolution and iteration counts used to compute the height,选择计算高度所用的网格分辨率和迭代次数,選擇計算高度所用的網格解析度與迭代次數,높이를 구하는 격자의 해상도와 반복 횟수를 선택합니다,Selecciona la resolución de la cuadrícula y las iteraciones usadas para calcular la altura,يحدد دقة الشبكة وعدد التكرارات المستخدمة لحساب الارتفاع,Memilih resolusi kisi dan jumlah iterasi yang dipakai untuk menghitung tinggi
+LightDirection,,光の向き,Light Direction,光线方向,光線方向,빛의 방향,Dirección de la luz,اتجاه الضوء,Arah Cahaya
+LightDirectionDescription,,光が来る向きの角度です。0度で上から、正の値で時計回りに回ります,Angle the light comes from. 0 degrees is from above and positive values turn clockwise,光线来向的角度。0度表示从上方照射，正值按顺时针旋转,光線來向的角度。0度表示從上方照射，正值按順時針旋轉,빛이 오는 방향의 각도입니다. 0도는 위쪽이며 양수는 시계 방향으로 돕니다,Ángulo desde el que llega la luz. 0 grados es desde arriba y los valores positivos giran en sentido horario,زاوية قدوم الضوء. تعني 0 درجة من الأعلى وتدور القيم الموجبة في اتجاه عقارب الساعة,Sudut arah datangnya cahaya. 0 derajat berarti dari atas dan nilai positif berputar searah jarum jam
+LightElevation,,光の仰角,Light Elevation,光线仰角,光線仰角,빛의 고도,Elevación de la luz,ارتفاع الضوء,Elevasi Cahaya
+LightElevationDescription,,光が画面から立ち上がる角度です。90度で正面から照らします,Angle of the light above the screen plane. 90 degrees lights from the front,光线与画面平面的夹角。90度表示从正面照射,光線與畫面平面的夾角。90度表示從正面照射,화면에서 빛이 올라오는 각도입니다. 90도는 정면에서 비춥니다,Ángulo de la luz sobre el plano de la pantalla. 90 grados ilumina de frente,زاوية الضوء فوق مستوى الشاشة. تضيء 90 درجة من الأمام,Sudut cahaya terhadap bidang layar. 90 derajat menyinari dari depan
+Ambient,,環境光,Ambient Light,环境光,環境光,환경광,Luz ambiental,الإضاءة المحيطة,Cahaya Sekitar
+AmbientDescription,,光が当たらない面にも加わる明るさです,Brightness added even to surfaces the light does not reach,即使在光线照不到的面上也会增加的亮度,即使在光線照不到的面上也會增加的亮度,빛이 닿지 않는 면에도 더해지는 밝기입니다,Brillo que se añade incluso a las superficies a las que no llega la luz,السطوع المضاف حتى إلى الأسطح التي لا يصل إليها الضوء,Kecerahan yang ditambahkan bahkan pada permukaan yang tidak terkena cahaya
+Specular,,光沢,Gloss,光泽,光澤,광택,Brillo,اللمعان,Kilap
+SpecularDescription,,光源のハイライトの強さです,Strength of the highlight from the light source,光源高光的强度,光源高光的強度,광원 하이라이트의 강도입니다,Intensidad del reflejo de la fuente de luz,قوة الإبراز الناتج عن مصدر الضوء,Kekuatan sorotan dari sumber cahaya
+Sharpness,,光沢の鋭さ,Gloss Sharpness,光泽锐度,光澤銳度,광택의 선명도,Nitidez del brillo,حدة اللمعان,Ketajaman Kilap
+SharpnessDescription,,大きいほどハイライトが小さく鋭くなります,Larger values make the highlight smaller and sharper,数值越大，高光越小越锐利,數值越大，高光越小越銳利,값이 클수록 하이라이트가 작고 선명해집니다,Los valores mayores hacen el reflejo más pequeño y nítido,كلما زادت القيمة أصبح الإبراز أصغر وأحد,Nilai yang lebih besar membuat sorotan lebih kecil dan tajam
+Reflection,,映り込み,Reflection,映照,映照,반사,Reflejo,الانعكاس,Pantulan
+ReflectionDescription,,周囲の景色が表面に映る強さです,Strength of the surroundings reflected on the surface,周围景色映在表面上的强度,周圍景色映在表面上的強度,주변 풍경이 표면에 비치는 강도입니다,Intensidad con la que el entorno se refleja en la superficie,قوة انعكاس المحيط على السطح,Kekuatan pantulan lingkungan sekitar pada permukaan
+Rim,,縁の光,Rim Light,边缘光,邊緣光,가장자리 빛,Luz de borde,ضوء الحافة,Cahaya Tepi
+RimDescription,,縁に近いほど明るくなる光の強さです,Strength of the light that brightens toward the edge,越靠近边缘越亮的光的强度,越靠近邊緣越亮的光的強度,가장자리에 가까울수록 밝아지는 빛의 강도입니다,Intensidad de la luz que se vuelve más brillante cerca del borde,قوة الضوء الذي يزداد سطوعاً كلما اقتربنا من الحافة,Kekuatan cahaya yang makin terang di dekat tepi
+ColorKeep,,素材の色,Source Color,素材颜色,素材顏色,소재의 색,Color del material,لون المصدر,Warna Sumber
+ColorKeepDescription,,素材の色を残す割合です。0%では白い素材として照らします,"Ratio of the source color that is kept. At 0%, the shape is lit as a white material",保留素材颜色的比例。为0%时按白色素材照明,保留素材顏色的比例。為0%時按白色素材照明,소재의 색을 남기는 비율입니다. 0%에서는 흰 소재로 비춥니다,"Proporción del color del material que se conserva. Con 0 %, se ilumina como un material blanco",نسبة الاحتفاظ بلون المصدر. عند 0% تُضاء كمادة بيضاء,"Rasio warna sumber yang dipertahankan. Pada 0%, bentuk disinari sebagai bahan putih"
+QualityBalanced,,標準,Balanced,标准,標準,표준,Equilibrado,متوازن,Seimbang
+QualityBalancedDescription,,格子の解像度と反復回数を抑えた設定です,Uses reduced grid resolution and iteration counts,降低网格分辨率和迭代次数的设置,降低網格解析度與迭代次數的設定,격자 해상도와 반복 횟수를 줄인 설정입니다,Usa una resolución de cuadrícula y unas iteraciones reducidas,يستخدم دقة شبكة وعدد تكرارات منخفضين,Memakai resolusi kisi dan jumlah iterasi yang dikurangi
+QualityHigh,,高品質,High,高品质,高品質,고품질,Alta,عالية,Tinggi
+QualityHighDescription,,品質と処理量の基準設定です,The reference balance of quality and cost,质量与处理量的基准设置,品質與處理量的基準設定,품질과 처리량의 기준 설정입니다,El equilibrio de referencia entre calidad y coste,التوازن المرجعي بين الجودة والتكلفة,Keseimbangan acuan antara kualitas dan beban
+QualityUltra,,最高品質,Ultra,最高品质,最高品質,최고 품질,Ultra,فائقة,Ultra
+QualityUltraDescription,,最大の格子解像度と反復回数を使用します,Uses the largest grid resolution and iteration counts,使用最大的网格分辨率和迭代次数,使用最大的網格解析度與迭代次數,가장 큰 격자 해상도와 반복 횟수를 사용합니다,Usa la mayor resolución de cuadrícula y número de iteraciones,يستخدم أعلى دقة للشبكة وأكبر عدد من التكرارات,Memakai resolusi kisi dan jumlah iterasi terbesar
+TagInflate,,膨らみ,Inflate,膨胀,膨脹,부풀림,Inflar,تضخيم,Gembung
+TagThreeDimensional,,立体,3D,立体,立體,입체,3D,ثلاثي الأبعاد,3D
+TagGloss,,光沢,Gloss,光泽,光澤,광택,Brillo,لمعان,Kilap
 UpdateAvailableMessage,,新しいバージョン {0} が公開されています。,A new version {0} is available.,已发布新版本 {0}。,已發布新版本 {0}。,새 버전 {0}이(가) 공개되었습니다.,La nueva versión {0} está disponible.,الإصدار الجديد {0} متاح الآن.,Versi baru {0} telah tersedia.
