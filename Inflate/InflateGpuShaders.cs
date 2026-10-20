@@ -814,26 +814,37 @@ internal readonly partial struct CopyShader(
 
 internal static class InflateShaderMath
 {
+    private const float ChannelMaximum = 255f;
+    private const int BitsPerChannel = 8;
+    private const uint GoldenRatioMultiplier = 0x9E3779B9u;
+    private const uint Murmur3FirstMultiplier = 0x85EBCA6Bu;
+    private const uint Murmur3SecondMultiplier = 0xC2B2AE35u;
+    private const int Murmur3FirstShift = 16;
+    private const int Murmur3SecondShift = 13;
+
     public static uint MixTexel(uint index, Float4 texel)
     {
-        var packed = (uint)(texel.X * 255f + 0.5f)
-            | ((uint)(texel.Y * 255f + 0.5f) << 8)
-            | ((uint)(texel.Z * 255f + 0.5f) << 16)
-            | ((uint)(texel.W * 255f + 0.5f) << 24);
+        var packed = Quantize(texel.X)
+            | (Quantize(texel.Y) << BitsPerChannel)
+            | (Quantize(texel.Z) << (2 * BitsPerChannel))
+            | (Quantize(texel.W) << (3 * BitsPerChannel));
         return Mix(index, packed);
     }
 
     public static uint MixAlpha(uint index, float alpha)
-        => Mix(index, (uint)(alpha * 255f + 0.5f));
+        => Mix(index, Quantize(alpha));
+
+    private static uint Quantize(float value)
+        => (uint)(value * ChannelMaximum + 0.5f);
 
     private static uint Mix(uint index, uint packed)
     {
-        var mixed = index * 0x9E3779B9u ^ packed;
-        mixed ^= mixed >> 16;
-        mixed *= 0x85EBCA6Bu;
-        mixed ^= mixed >> 13;
-        mixed *= 0xC2B2AE35u;
-        mixed ^= mixed >> 16;
+        var mixed = index * GoldenRatioMultiplier ^ packed;
+        mixed ^= mixed >> Murmur3FirstShift;
+        mixed *= Murmur3FirstMultiplier;
+        mixed ^= mixed >> Murmur3SecondShift;
+        mixed *= Murmur3SecondMultiplier;
+        mixed ^= mixed >> Murmur3FirstShift;
         return mixed;
     }
 }
