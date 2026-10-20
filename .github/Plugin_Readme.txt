@@ -4,9 +4,9 @@
 YukkuriMovieMaker4上で動作する、現在のフレームの不透明度を輪郭とみなし、
 輪郭の内側が広い所ほど高く膨らんだ面をポアソン方程式で求め、
 光源と質感を与えて元映像へ重ねる映像エフェクトプラグインです。
-高さの計算は、Sýkora らの論文「Ink-and-Ray: Bas-Relief Meshes for Adding Global
-Illumination Effects to Hand-Drawn Characters」（ACM Transactions on Graphics
-2014）に基づきます。この論文は領域を膨らませる手順として、
+高さの計算は、Sýkoraらの論文「Ink-and-Ray: Bas-Relief Meshes for Adding Global
+Illumination Effects to Hand-Drawn Characters」（ACM Transactions on Graphics、
+2014年）に基づきます。この論文は領域を膨らませる手順として、
 ポアソン方程式の解の平方根を高さとする方法を示しています。
 履歴フレーム、参照画像、深度情報、学習済みモデルは使用しません。
 結果は入力映像と設定から決定論的に決まり、
