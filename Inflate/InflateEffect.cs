@@ -26,8 +26,8 @@ public sealed class InflateEffect : VideoEffectBase
     public Animation Amount { get; } = new Animation(100, 0, 100);
 
     [Display(GroupName = nameof(Texts.BasicGroup), Name = nameof(Texts.Height), Description = nameof(Texts.HeightDescription), Order = 1, ResourceType = typeof(Texts))]
-    [AnimationSlider("F1", "%", 0, 300)]
-    public Animation Height { get; } = new Animation(100, 0, 300);
+    [AnimationSlider("F1", "%", 0, 100 * InflateSettings.MaximumHeight)]
+    public Animation Height { get; } = new Animation(100, 0, 100 * InflateSettings.MaximumHeight);
 
     [Display(GroupName = nameof(Texts.BasicGroup), Name = nameof(Texts.Quality), Description = nameof(Texts.QualityDescription), Order = 2, ResourceType = typeof(Texts))]
     [EnumComboBox]
@@ -35,20 +35,20 @@ public sealed class InflateEffect : VideoEffectBase
     private InflateQuality _quality = InflateQuality.High;
 
     [Display(GroupName = nameof(Texts.LightGroup), Name = nameof(Texts.LightDirection), Description = nameof(Texts.LightDirectionDescription), Order = 10, ResourceType = typeof(Texts))]
-    [AnimationSlider("F1", "°", -180, 180)]
-    public Animation LightDirection { get; } = new Animation(-45, -180, 180);
+    [AnimationSlider("F1", "°", -InflateSettings.LightAzimuthLimitDegrees, InflateSettings.LightAzimuthLimitDegrees)]
+    public Animation LightDirection { get; } = new Animation(-45, -InflateSettings.LightAzimuthLimitDegrees, InflateSettings.LightAzimuthLimitDegrees);
 
     [Display(GroupName = nameof(Texts.LightGroup), Name = nameof(Texts.LightElevation), Description = nameof(Texts.LightElevationDescription), Order = 11, ResourceType = typeof(Texts))]
-    [AnimationSlider("F1", "°", 0, 90)]
-    public Animation LightElevation { get; } = new Animation(50, 0, 90);
+    [AnimationSlider("F1", "°", 0, InflateSettings.MaximumLightElevationDegrees)]
+    public Animation LightElevation { get; } = new Animation(50, 0, InflateSettings.MaximumLightElevationDegrees);
 
     [Display(GroupName = nameof(Texts.LightGroup), Name = nameof(Texts.Ambient), Description = nameof(Texts.AmbientDescription), Order = 12, ResourceType = typeof(Texts))]
     [AnimationSlider("F1", "%", 0, 100)]
     public Animation Ambient { get; } = new Animation(30, 0, 100);
 
     [Display(GroupName = nameof(Texts.MaterialGroup), Name = nameof(Texts.Specular), Description = nameof(Texts.SpecularDescription), Order = 20, ResourceType = typeof(Texts))]
-    [AnimationSlider("F1", "%", 0, 200)]
-    public Animation Specular { get; } = new Animation(80, 0, 200);
+    [AnimationSlider("F1", "%", 0, 100 * InflateSettings.MaximumSpecular)]
+    public Animation Specular { get; } = new Animation(80, 0, 100 * InflateSettings.MaximumSpecular);
 
     [Display(GroupName = nameof(Texts.MaterialGroup), Name = nameof(Texts.Sharpness), Description = nameof(Texts.SharpnessDescription), Order = 21, ResourceType = typeof(Texts))]
     [AnimationSlider("F1", "%", 0, 100)]

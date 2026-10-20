@@ -109,11 +109,11 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
 
         var pipelineParameters = new InflatePipeline.Parameters(
             parameters.Quality,
-            Math.Clamp(parameters.Height, 0f, 3f),
-            Math.Clamp(parameters.LightAzimuth, -180f, 180f),
-            Math.Clamp(parameters.LightElevation, 0f, 90f),
+            Math.Clamp(parameters.Height, 0f, InflateSettings.MaximumHeight),
+            Math.Clamp(parameters.LightAzimuth, -InflateSettings.LightAzimuthLimitDegrees, InflateSettings.LightAzimuthLimitDegrees),
+            Math.Clamp(parameters.LightElevation, 0f, InflateSettings.MaximumLightElevationDegrees),
             Math.Clamp(parameters.Ambient, 0f, 1f),
-            Math.Clamp(parameters.Specular, 0f, 2f),
+            Math.Clamp(parameters.Specular, 0f, InflateSettings.MaximumSpecular),
             Math.Clamp(parameters.Sharpness, 0f, 1f),
             Math.Clamp(parameters.Reflection, 0f, 1f),
             Math.Clamp(parameters.Rim, 0f, 1f),

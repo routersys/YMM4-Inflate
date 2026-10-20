@@ -16,6 +16,9 @@ internal static class InflateSettings
     public const float MaximumCorrectionScale = 4f;
     public const float RadiansPerDegree = MathF.PI / 180f;
     public const float MaximumLightElevationDegrees = 90f;
+    public const float LightAzimuthLimitDegrees = 180f;
+    public const float MaximumHeight = 3f;
+    public const float MaximumSpecular = 2f;
     public const uint MaskInside = 1u;
     public const int MaskOutsideShift = 1;
     public const int MaskOutsideWidth = 3;
