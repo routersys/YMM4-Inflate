@@ -14,6 +14,8 @@ internal static class InflateSettings
     public const int RowGroupHeight = 2;
     public const int CorrectionGroupSize = 8;
     public const int CorrectionGroupThreads = CorrectionGroupSize * CorrectionGroupSize;
+    public const int CorrectionTilesPerGroup = 4;
+    public const int CorrectionGroupWidth = CorrectionGroupSize * CorrectionTilesPerGroup;
     public const int CorrectionReduceThreads = 256;
     public const float MaximumCorrectionScale = 4f;
     public const float MinimumInterpolationWeight = 1e-6f;

@@ -477,7 +477,7 @@ internal readonly partial struct ProlongShader(
     }
 }
 
-[ThreadGroupSize(InflateSettings.CorrectionGroupSize, InflateSettings.CorrectionGroupSize, 1)]
+[ThreadGroupSize(InflateSettings.CorrectionGroupWidth, InflateSettings.CorrectionGroupSize, 1)]
 [GeneratedComputeShaderDescriptor]
 internal readonly partial struct CorrectionDotShader(
     ReadWriteBuffer<float> potential,
@@ -502,12 +502,14 @@ internal readonly partial struct CorrectionDotShader(
     private readonly int fineHeight = fineHeight;
     private readonly int groupsX = groupsX;
 
-    [GroupShared(2 * InflateSettings.CorrectionGroupThreads)]
+    [GroupShared(2 * InflateSettings.CorrectionTilesPerGroup * InflateSettings.CorrectionGroupThreads)]
     private static readonly float[] sums = null!;
 
     public void Execute()
     {
-        var local = GroupIds.Index;
+        var tile = GroupIds.X / InflateSettings.CorrectionGroupSize;
+        var local = GroupIds.Y * InflateSettings.CorrectionGroupSize + GroupIds.X % InflateSettings.CorrectionGroupSize;
+        var tileBase = tile * 2 * InflateSettings.CorrectionGroupThreads;
         var x = ThreadIds.X;
         var y = ThreadIds.Y;
         var residualDot = 0f;
@@ -534,25 +536,26 @@ internal readonly partial struct CorrectionDotShader(
                 }
             }
         }
-        sums[local] = residualDot;
-        sums[InflateSettings.CorrectionGroupThreads + local] = energy;
+        sums[tileBase + local] = residualDot;
+        sums[tileBase + InflateSettings.CorrectionGroupThreads + local] = energy;
         Hlsl.GroupMemoryBarrierWithGroupSync();
 
         for (var stride = InflateSettings.CorrectionGroupThreads / 2; stride > 0; stride /= 2)
         {
             if (local < stride)
             {
-                sums[local] += sums[local + stride];
-                sums[InflateSettings.CorrectionGroupThreads + local] += sums[InflateSettings.CorrectionGroupThreads + local + stride];
+                sums[tileBase + local] += sums[tileBase + local + stride];
+                sums[tileBase + InflateSettings.CorrectionGroupThreads + local] += sums[tileBase + InflateSettings.CorrectionGroupThreads + local + stride];
             }
             Hlsl.GroupMemoryBarrierWithGroupSync();
         }
 
-        if (local == 0)
+        var column = GridIds.X * InflateSettings.CorrectionTilesPerGroup + tile;
+        if (local == 0 && column < groupsX)
         {
-            var group = GridIds.Y * groupsX + GridIds.X;
-            partial[2 * group] = sums[0];
-            partial[2 * group + 1] = sums[InflateSettings.CorrectionGroupThreads];
+            var group = GridIds.Y * groupsX + column;
+            partial[2 * group] = sums[tileBase];
+            partial[2 * group + 1] = sums[tileBase + InflateSettings.CorrectionGroupThreads];
         }
     }
 
