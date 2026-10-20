@@ -63,17 +63,6 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
         var length = effectDescription.ItemDuration.Frame;
         var fps = effectDescription.FPS;
         var amount = (float)(_item.Amount.GetValue(frame, length, fps) / 100.0);
-        var parameters = new InflatePipeline.Parameters(
-            _item.Quality,
-            (float)(_item.Height.GetValue(frame, length, fps) / 100.0),
-            (float)_item.LightDirection.GetValue(frame, length, fps),
-            (float)_item.LightElevation.GetValue(frame, length, fps),
-            (float)(_item.Ambient.GetValue(frame, length, fps) / 100.0),
-            (float)(_item.Specular.GetValue(frame, length, fps) / 100.0),
-            (float)(_item.Sharpness.GetValue(frame, length, fps) / 100.0),
-            (float)(_item.Reflection.GetValue(frame, length, fps) / 100.0),
-            (float)(_item.Rim.GetValue(frame, length, fps) / 100.0),
-            (float)(_item.ColorKeep.GetValue(frame, length, fps) / 100.0));
 
         if (_isFirst || _amount != amount)
             _effect.Amount = amount;
@@ -107,17 +96,7 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
 
         RenderInput(new Vortice.RawRectF(bounds.Left, bounds.Top, bounds.Left + width, bounds.Top + height));
 
-        var pipelineParameters = new InflatePipeline.Parameters(
-            parameters.Quality,
-            Math.Clamp(parameters.Height, 0f, InflateSettings.MaximumHeight),
-            Math.Clamp(parameters.LightAzimuth, -InflateSettings.LightAzimuthLimitDegrees, InflateSettings.LightAzimuthLimitDegrees),
-            Math.Clamp(parameters.LightElevation, 0f, InflateSettings.MaximumLightElevationDegrees),
-            Math.Clamp(parameters.Ambient, 0f, 1f),
-            Math.Clamp(parameters.Specular, 0f, InflateSettings.MaximumSpecular),
-            Math.Clamp(parameters.Sharpness, 0f, 1f),
-            Math.Clamp(parameters.Reflection, 0f, 1f),
-            Math.Clamp(parameters.Rim, 0f, 1f),
-            Math.Clamp(parameters.ColorKeep, 0f, 1f));
+        var pipelineParameters = ReadParameters(frame, length, fps);
 
         var simulation = _pipeline.Simulate(
             _resourceSet.GetSourceComputeBinding(),
@@ -174,6 +153,24 @@ internal sealed class InflateEffectProcessor : VideoEffectProcessorBase
         _hasOutput = true;
         _isFirst = false;
         return effectDescription.DrawDescription;
+    }
+
+    private InflatePipeline.Parameters ReadParameters(int frame, int length, int fps)
+    {
+        float Percent(Animation animation, float maximum)
+            => Math.Clamp((float)(animation.GetValue(frame, length, fps) / 100.0), 0f, maximum);
+
+        return new InflatePipeline.Parameters(
+            _item.Quality,
+            Percent(_item.Height, InflateSettings.MaximumHeight),
+            Math.Clamp((float)_item.LightDirection.GetValue(frame, length, fps), -InflateSettings.LightAzimuthLimitDegrees, InflateSettings.LightAzimuthLimitDegrees),
+            Math.Clamp((float)_item.LightElevation.GetValue(frame, length, fps), 0f, InflateSettings.MaximumLightElevationDegrees),
+            Percent(_item.Ambient, 1f),
+            Percent(_item.Specular, InflateSettings.MaximumSpecular),
+            Percent(_item.Sharpness, 1f),
+            Percent(_item.Reflection, 1f),
+            Percent(_item.Rim, 1f),
+            Percent(_item.ColorKeep, 1f));
     }
 
     private bool OutputCovers(int width, int height)
