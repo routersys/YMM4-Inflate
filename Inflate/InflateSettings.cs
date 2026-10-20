@@ -60,7 +60,7 @@ internal static class InflateSettings
     }
 
     public static (int Width, int Height) GetCoarserLevelSize(int width, int height)
-        => ((width + 1) / 2, (height + 1) / 2);
+        => (CeilDivide(width, 2), CeilDivide(height, 2));
 
     public static int GetLevelCount(int gridWidth, int gridHeight)
     {
@@ -100,8 +100,14 @@ internal static class InflateSettings
     public static int GetPyramidLength(int gridWidth, int gridHeight)
         => GetLevelOffset(gridWidth, gridHeight, GetLevelCount(gridWidth, gridHeight));
 
+    public static int GetCorrectionGroupColumns(int gridWidth)
+        => CeilDivide(gridWidth, CorrectionGroupSize);
+
     public static int GetCorrectionGroupCount(int gridWidth, int gridHeight)
-        => (gridWidth + CorrectionGroupSize - 1) / CorrectionGroupSize * ((gridHeight + CorrectionGroupSize - 1) / CorrectionGroupSize);
+        => GetCorrectionGroupColumns(gridWidth) * CeilDivide(gridHeight, CorrectionGroupSize);
+
+    public static int CeilDivide(int value, int divisor)
+        => (value + divisor - 1) / divisor;
 
     public static bool IsSupportedSize(double width, double height)
         => width >= 1d && height >= 1d &&

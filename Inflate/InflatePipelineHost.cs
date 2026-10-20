@@ -264,7 +264,7 @@ internal sealed partial class InflatePipelineHost
                 coarseHeight,
                 gridWidth,
                 gridHeight,
-                (gridWidth + InflateSettings.CorrectionGroupSize - 1) / InflateSettings.CorrectionGroupSize));
+                InflateSettings.GetCorrectionGroupColumns(gridWidth)));
         context.Barrier(grid.Partial);
         context.Barrier(grid.Scale);
         context.For(
@@ -316,7 +316,7 @@ internal sealed partial class InflatePipelineHost
             for (var color = 0; color < 2; color++)
             {
                 context.For(
-                    (width + 1) / 2,
+                    InflateSettings.CeilDivide(width, 2),
                     height,
                     new GaussSeidelShader(grid.Mask, grid.Residual, grid.Potential, offset, width, height, color, constantRhs ? 1 : 0, rhsValue));
                 context.Barrier(grid.Potential);
